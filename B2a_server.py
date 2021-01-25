@@ -37,7 +37,7 @@ def create_server():
                         break
                     else:
                         print(f"=> {file_name} is being sent to client...")
-                        file_size = os.path.getsize("./server/" + file_name)
+                        file_size = os.path.getsize("/Code/server/" + file_name)
                         client_connection.send(str(file_size).encode("utf8"))
 
                         # Openning file and sending data 
@@ -68,7 +68,7 @@ def create_server():
                     if not file_name:
                         break
                     else:
-                        with open("./server/" + file_name, "wb") as f:
+                        with open("/Code/server/" + file_name, "wb") as f:
                             print(f"=> {file_name} is being received from client ...")
                             c = 0
                             start_time = time.time()

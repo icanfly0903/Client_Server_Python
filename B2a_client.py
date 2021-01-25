@@ -33,7 +33,7 @@ class create_client:
     # Hiển thị tất cả các file đã upload lên server
     def lists(self):
         print("List files were uploaded to server:")
-        for f in os.listdir("./client<127.0.0.1><9669>/upload/"):
+        for f in os.listdir("/Code/client<127.0.0.1><9669>/upload/"):
             print(f"+) {f}")
     
     # Upload file lên server 
@@ -43,14 +43,14 @@ class create_client:
         print("=> Uploading file to server...")
         # Getting file details
         file_name = input("Upload file name:")
-        file_size = os.path.getsize("./client<127.0.0.1><9669>/upload/" + file_name)
+        file_size = os.path.getsize("/Code/client<127.0.0.1><9669>/upload/" + file_name)
         print(file_size)
         # Sending file_name and detail
         client_sock.send(file_name.encode("utf8"))
         client_sock.send(str(file_size).encode("utf8"))
 
         # Openning file and send data
-        with open("./client<127.0.0.1><9669>/upload/" + file_name, "rb") as f:
+        with open("/Code/client<127.0.0.1><9669>/upload/" + file_name, "rb") as f:
             c = 0
             # Starting the time capture 
             start_time = time.time()
@@ -80,7 +80,7 @@ class create_client:
         file_size = client_sock.recv(1024).decode("utf8")
         
         # Openning and reading file
-        with open("./client<127.0.0.1><9669>/download/" + file_name, "wb") as f:
+        with open("/Code/client<127.0.0.1><9669>/download/" + file_name, "wb") as f:
             c = 0
             start_time = time.time()
 
